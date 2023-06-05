@@ -23,7 +23,7 @@ vn: kiến thức sử dụng trong dự án này là dùng kĩ thuật xử lý
 
 <div style="margin: auto;">
   <h2> 
-  <img src="dataset/IMAGE/001.jpg" width="500" height="480"</img> 
+  <img src="dataset/IMAGE/001.jpg" width="400" height="480"</img> 
   <img src="demo/threshold.png" width="640" height="480"</img> 
        
   </h2>
