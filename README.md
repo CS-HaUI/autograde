@@ -18,7 +18,7 @@ vn: kiến thức sử dụng trong dự án này là dùng kĩ thuật xử lý
 
 - Document Scanner:
 
-  + Edge detection
+  + Edge detection: Canny
   
   + Dilation
 
@@ -32,7 +32,7 @@ vn: kiến thức sử dụng trong dự án này là dùng kĩ thuật xử lý
 
 - Thresholding result [05/06/2023]:
 
-![a](demo/demo1.png)
+![a](demo/demo5.png)
 
 
 # References
@@ -40,3 +40,5 @@ vn: kiến thức sử dụng trong dự án này là dùng kĩ thuật xử lý
 [1](https://www.phamduytung.com/blog/2020-12-24-thresholding/) Thresholding
 
 [2](https://aiots.vn/phan-9-loc-anh-su-dung-tich-chap-trong-opencv/#9) bilateralFilter
+
+[3](https://vinbigdata.com/kham-pha/canny-phat-hien-canh-trong-opencv-huong-dan-chi-tiet-tung-buoc.html) CannyDetect

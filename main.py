@@ -7,6 +7,19 @@ from lib.morphological import change_brightness, erode, dilate
 def nothing(x):
     pass
 
+
+def initializeTrackbars(intialTracbarVals=0):
+    cv2.namedWindow("Trackbars")
+    cv2.resizeWindow("Trackbars", 360, 240)
+    cv2.createTrackbar("Threshold1", "Trackbars", 200,255, nothing)
+    cv2.createTrackbar("Threshold2", "Trackbars", 200, 255, nothing)
+
+def valTrackbars():
+    Threshold1 = cv2.getTrackbarPos("Threshold1", "Trackbars")
+    Threshold2 = cv2.getTrackbarPos("Threshold2", "Trackbars")
+    src = Threshold1,Threshold2
+    return src
+
 def tracking_white(image, origin=None):
     # temp = cv2.cvtColor(image,cv2.COLOR_GRAY2RGB)
     hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
@@ -18,31 +31,41 @@ def tracking_white(image, origin=None):
     return res
 
 
-image = cv2.imread("dataset\\IMAGE\\004.jpg")
-res = tracking_white(image)
-gray = cv2.cvtColor(res, cv2.COLOR_HSV2BGR)
-gray = cv2.cvtColor(res, cv2.COLOR_BGR2GRAY)
-gray = cv2.bilateralFilter(gray, 20, 70, 70)
-img = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 113, 3)
+initializeTrackbars()
 
-edges_image = cv2.morphologyEx(img, cv2.MORPH_CLOSE, np.ones((5, 5)), iterations= 3)
+cap = cv2.VideoCapture(0)
+width  = 500
+height = 600
+# print(width)
 
 
+while 1:
+    _, frame = cap.read()
+
+    if _ is not None:
+        image = frame.copy()
+        image = cv2.rotate(image, cv2.ROTATE_90_CLOCKWISE)
+        image = cv2.resize(image, (width, height))
+        gray  = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        thres = valTrackbars()
+        gauss = cv2.GaussianBlur(gray, (5, 5), 1)
+
+        img_thres = cv2.Canny(gauss,thres[0],thres[1])
 
 
+        # OPEN
+        kernel = np.ones((5, 5))
+        imgDial = cv2.dilate(img_thres, kernel, iterations=2)
+        imgThreshold = cv2.erode(imgDial, kernel, iterations=1)
+        # OPEN
 
-# contours, hierarchy = cv2.findContours(edges_image.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        cv2.imshow('origin', image)
+        cv2.imshow('output', imgThreshold)
 
-# print(contours)
-fig, ax = plt.subplots(nrows= 1, ncols= 3)
-ax[0].imshow(image[:, :, ::-1])
-ax[0].axis('off')
-ax[1].imshow(res[:, :, ::-1])
-ax[1].axis('off')
-ax[2].imshow(edges_image, cmap='gray')
-ax[2].axis('off')
+        if cv2.waitKey(1) & 0xFF == ord('x'):
+            break
+    else:
+        break
 
-ax[0].set_title("Ảnh ban đầu")
-ax[1].set_title("Ảnh lọc màu trắng")
-ax[2].set_title("Ảnh phân ngưỡng")
-plt.show()
+cap.release()
+cv2.destroyAllWindows()
