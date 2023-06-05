@@ -21,7 +21,10 @@ vn: kiến thức sử dụng trong dự án này là dùng kĩ thuật xử lý
 
 - Thresholding result [05/06/2023]:
 
-![Threshold](demo\threshold.png)
+<div style="margin: auto;">
+  <h2> <img src="demo/threshold.png" width="640" height="480"</img> 
+  </h2>
+</div>
 
 
 # References
