@@ -16,18 +16,23 @@ vn: kiến thức sử dụng trong dự án này là dùng kĩ thuật xử lý
 - bilateralFilter   : Lọc song phương -> làm mờ các pixel có cường độ tương tụ trong một vùng lân cận
 
 
+- Document Scanner:
+
+  + Edge detection
+  
+  + Dilation
+
+  + Contours
+
+  + Reoder
+
+
 # Result
 
 
 - Thresholding result [05/06/2023]:
 
-<div style="margin: auto;">
-  <h2> 
-  <img src="dataset/IMAGE/001.jpg" width="400" height="480"</img> 
-  <img src="demo/threshold.png" width="640" height="480"</img> 
-       
-  </h2>
-</div>
+![a](demo/demo1.png)
 
 
 # References
