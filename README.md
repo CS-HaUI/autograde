@@ -34,6 +34,10 @@ vn: kiến thức sử dụng trong dự án này là dùng kĩ thuật xử lý
 
 ![a](demo/demo5.png)
 
+- Thresholding Canny [06/06/2023]
+
+![a](demo/canny.gif)
+
 
 # References
 
